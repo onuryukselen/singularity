@@ -72,7 +72,6 @@ From: ubuntu:16.04
     tar -xvzf bcl2fastq2-v2.17.1.14.tar.gz
     mkdir ${BUILD}
     cd ${BUILD}
-    ${SOURCE}/src/configure --prefix=${INSTALL_DIR}
     sed -i 's@HINTS ENV C_INCLUDE_PATH ENV CPATH ENV CPLUS_INCLUDE_PATH@HINTS ENV C_INCLUDE_PATH ENV CPATH ENV CPLUS_INCLUDE_PATH /usr/include/x86_64-linux-gnu2/@g' ${SOURCE}/src/cmake/macros.cmake
     sed -i 's@boost::property_tree::xml_writer_make_settings@boost::property_tree::xml_writer_make_settings<ptree::key_type>@g' ${SOURCE}/src/cxx/lib/io/Xml.cpp
     ${SOURCE}/src/configure --prefix=${INSTALL_DIR}
