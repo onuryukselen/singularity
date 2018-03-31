@@ -65,7 +65,7 @@ From: ubuntu:16.04
     export TMP=/tmp
     export SOURCE=${TMP}/bcl2fastq
     export BUILD=${TMP}/bcl2fastq2-v2.17.1.14-build
-    export INSTALL_DIR=/usr/local/bcl2fastq2-v2.17.1.14
+    export INSTALL_DIR=/usr/bin/bcl2fastq2-v2.17.1.14
     cd ${TMP}
     wget ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/Software/bcl2fastq/bcl2fastq2-v2.17.1.14.tar.zip
     unzip bcl2fastq2-v2.17.1.14.tar.zip
@@ -77,8 +77,6 @@ From: ubuntu:16.04
     ${SOURCE}/src/configure --prefix=${INSTALL_DIR}
     make
     make install
-    PATH=$PATH:${INSTALL_DIR}/bin
-    export PATH
     
     
     
