@@ -7,7 +7,7 @@ From: ubuntu:16.04
     Version v1.0
 
 %environment
-    PATH=$PATH:/bin:/sbin:/usr/local/bin/dolphin-bin
+    PATH=$PATH:/bin:/sbin:/usr/local/bin/dolphin-bin:/usr/bin/bcl2fastq2-v2.17.1.14/bin
     export PATH
 
 %post
@@ -77,7 +77,7 @@ From: ubuntu:16.04
     ${SOURCE}/src/configure --prefix=${INSTALL_DIR}
     make
     make install
-    export PATH=$PATH:/usr/bin/bcl2fastq2-v2.17.1.14/bin    
+#    export PATH=$PATH:/usr/bin/bcl2fastq2-v2.17.1.14/bin    
     
     
     
