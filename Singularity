@@ -67,26 +67,25 @@ From: ubuntu:16.04
     #################
     ## BCL2FASTQ v2.17.1.14
     #################
-    add-apt-repository universe
-    apt-get update
-    apt-get -y install zip unzip zlibc libc6 libboost-all-dev cmake
-    
-    export TMP=/tmp
-    export SOURCE=${TMP}/bcl2fastq
-    export BUILD=${TMP}/bcl2fastq2-v2.17.1.14-build
-    export INSTALL_DIR=/usr/bin/bcl2fastq2-v2.17.1.14
-    cd ${TMP}
-    wget ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/Software/bcl2fastq/bcl2fastq2-v2.17.1.14.tar.zip
-    unzip bcl2fastq2-v2.17.1.14.tar.zip
-    tar -xvzf bcl2fastq2-v2.17.1.14.tar.gz
-    mkdir ${BUILD}
-    cd ${BUILD}
-    sed -i 's@HINTS ENV C_INCLUDE_PATH ENV CPATH ENV CPLUS_INCLUDE_PATH@HINTS ENV C_INCLUDE_PATH ENV CPATH ENV CPLUS_INCLUDE_PATH /usr/include/x86_64-linux-gnu/@g' ${SOURCE}/src/cmake/macros.cmake
-    sed -i 's@boost::property_tree::xml_writer_make_settings@boost::property_tree::xml_writer_make_settings<ptree::key_type>@g' ${SOURCE}/src/cxx/lib/io/Xml.cpp
-    ${SOURCE}/src/configure --prefix=${INSTALL_DIR}
-    make
-    make install
-#    export PATH=$PATH:/usr/bin/bcl2fastq2-v2.17.1.14/bin    
+#    add-apt-repository universe
+#    apt-get update
+#    apt-get -y install zip unzip zlibc libc6 libboost-all-dev cmake
+#    
+#    export TMP=/tmp
+#    export SOURCE=${TMP}/bcl2fastq
+#    export BUILD=${TMP}/bcl2fastq2-v2.17.1.14-build
+#    export INSTALL_DIR=/usr/bin/bcl2fastq2-v2.17.1.14
+#    cd ${TMP}
+#    wget ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/Software/bcl2fastq/bcl2fastq2-v2.17.1.14.tar.zip
+#    unzip bcl2fastq2-v2.17.1.14.tar.zip
+#    tar -xvzf bcl2fastq2-v2.17.1.14.tar.gz
+#    mkdir ${BUILD}
+#    cd ${BUILD}
+#    sed -i 's@HINTS ENV C_INCLUDE_PATH ENV CPATH ENV CPLUS_INCLUDE_PATH@HINTS ENV C_INCLUDE_PATH ENV CPATH ENV CPLUS_INCLUDE_PATH /usr/include/x86_64-linux-gnu/@g' ${SOURCE}/src/cmake/macros.cmake
+#    sed -i 's@boost::property_tree::xml_writer_make_settings@boost::property_tree::xml_writer_make_settings<ptree::key_type>@g' ${SOURCE}/src/cxx/lib/io/Xml.cpp
+#    ${SOURCE}/src/configure --prefix=${INSTALL_DIR}
+#    make
+#    make install
     
     
     
