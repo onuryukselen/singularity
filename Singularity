@@ -19,6 +19,15 @@ From: ubuntu:16.04
     subversion g++ gcc gfortran libcurl4-openssl-dev curl
 
     ###################
+    ## Python modules 
+    ###################
+	
+	export LC_ALL=C
+	pip install --upgrade pip
+	pip install pysam
+	pip install numpy scipy biopython
+
+    ###################
     ## JAVA 
     ###################
 
