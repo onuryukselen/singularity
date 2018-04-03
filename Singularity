@@ -75,8 +75,8 @@ From: ubuntu:16.04
     export SOURCE=${TMP}/bcl2fastq
     export BUILD=${TMP}/bcl2fastq2-v2.17.1.14-build
     export INSTALL_DIR=/usr/bin/bcl2fastq2-v2.17.1.14
-    cd ${TMP}
     git clone https://github.com/onuryukselen/singularity/programs /tmp/programs
+    cd ${TMP}
 #    wget ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/Software/bcl2fastq/bcl2fastq2-v2.17.1.14.tar.zip
     unzip bcl2fastq2-v2.17.1.14.tar.zip
     tar -xvzf bcl2fastq2-v2.17.1.14.tar.gz
