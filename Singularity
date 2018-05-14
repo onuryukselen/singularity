@@ -23,7 +23,8 @@ From: ubuntu:16.04
     ###################
 	
 	export LC_ALL=C
-	pip install --upgrade pip
+#	pip install --upgrade pip
+	pip install --upgrade pip==9.0.3
 	pip install pysam
 	pip install numpy scipy biopython
 
