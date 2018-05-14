@@ -87,6 +87,11 @@ From: ubuntu:16.04
     ${SOURCE}/src/configure --prefix=${INSTALL_DIR}
     make
     make install
+	
+	#################
+    ## UMI-TOOLS
+    #################
+	pip install umi_tools
     
     
     
