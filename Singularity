@@ -7,7 +7,7 @@ From: ubuntu:16.04
     Version v1.0
 
 %environment
-    PATH=$PATH:/bin:/sbin:/usr/local/bin/dolphin-bin:/usr/bin/bcl2fastq2-v2.17.1.14/bin:/usr/local/bin/dolphin-bin/tophat2_2.0.12
+    PATH=$PATH:/bin:/sbin:/usr/local/bin/dolphin-bin:/usr/bin/bcl2fastq2-v2.17.1.14/bin:/usr/local/bin/dolphin-bin/tophat-2.0.14.Linux_x86_64
     export PATH
 
 %post
@@ -23,7 +23,6 @@ From: ubuntu:16.04
     ###################
 	
 	export LC_ALL=C
-#	pip install --upgrade pip
 	pip install --upgrade pip==9.0.3
 	pip install pysam
 	pip install numpy scipy biopython
@@ -64,7 +63,13 @@ From: ubuntu:16.04
 
     cd /usr/local/bin/dolphin-bin/MACS2 && python setup.py install
     make -C /usr/local/bin/dolphin-bin/RSEM-1.2.29
-    
+
+    cd /tmp
+    wget https://ccb.jhu.edu/software/tophat/downloads/tophat-2.0.14.Linux_x86_64.tar.gz
+    tar -xvzf tophat-2.0.14.Linux_x86_64.tar.gz
+    rm -rf /usr/local/bin/dolphin-bin/tophat2_2.0.12
+    mv tophat-2.0.14.Linux_x86_64/ /usr/local/bin/dolphin-bin/.
+	    
     #################
     ## BCL2FASTQ v2.17.1.14
     #################
