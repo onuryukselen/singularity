@@ -64,11 +64,18 @@ From: ubuntu:16.04
     cd /usr/local/bin/dolphin-bin/MACS2 && python setup.py install
     make -C /usr/local/bin/dolphin-bin/RSEM-1.2.29
 
+    ###tophat-2.0.14
     cd /tmp
     wget https://ccb.jhu.edu/software/tophat/downloads/tophat-2.0.14.Linux_x86_64.tar.gz
     tar -xvzf tophat-2.0.14.Linux_x86_64.tar.gz
     rm -rf /usr/local/bin/dolphin-bin/tophat2_2.0.12
     mv tophat-2.0.14.Linux_x86_64/ /usr/local/bin/dolphin-bin/.
+   
+    ###bowtie
+    wget -N --no-check-certificate https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.1.0/bowtie2-2.1.0-linux-x86_64.zip
+    unzip bowtie2-2.1.0-linux-x86_64.zip
+    rm -rf /usr/local/bin/dolphin-bin/bowtie2*
+    mv bowtie2-2.1.0/bowtie2* /usr/local/bin/dolphin-bin/.
 	    
     #################
     ## BCL2FASTQ v2.17.1.14
