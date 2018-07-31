@@ -72,10 +72,10 @@ From: ubuntu:16.04
     mv tophat-2.0.14.Linux_x86_64/ /usr/local/bin/dolphin-bin/.
    
     ###bowtie
-    wget -N --no-check-certificate https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.1.0/bowtie2-2.1.0-linux-x86_64.zip
-    unzip bowtie2-2.1.0-linux-x86_64.zip
-    rm -rf /usr/local/bin/dolphin-bin/bowtie2*
-    mv bowtie2-2.1.0/bowtie2* /usr/local/bin/dolphin-bin/.
+   # wget -N --no-check-certificate https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.1.0/bowtie2-2.1.0-linux-x86_64.zip
+   # unzip bowtie2-2.1.0-linux-x86_64.zip
+   # rm -rf /usr/local/bin/dolphin-bin/bowtie2*
+   # mv bowtie2-2.1.0/bowtie2* /usr/local/bin/dolphin-bin/.
 	    
     #################
     ## BCL2FASTQ v2.17.1.14
