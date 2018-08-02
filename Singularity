@@ -11,7 +11,7 @@ From: ubuntu:16.04
     export PATH
 
 %post
-    apt-get update
+    apt-get update 
     apt-get -y upgrade
     apt-get dist-upgrade
     apt-get -y install unzip libsqlite3-dev libbz2-dev libssl-dev python python-dev \
