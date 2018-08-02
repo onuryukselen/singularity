@@ -11,13 +11,12 @@ From: ubuntu:16.04
     export PATH
 
 %post
-    apt-get update
+    apt-get update 
     apt-get -y upgrade
     apt-get dist-upgrade
     apt-get -y install unzip libsqlite3-dev libbz2-dev libssl-dev python python-dev \
     python-pip git libxml2-dev software-properties-common wget tree vim \
-    subversion g++ gcc gfortran libcurl4-openssl-dev curl
-
+    subversion g++ gcc gfortran libcurl4-openssl-dev curl zlib1g-dev build-essential libffi-dev  python-lzo
     ###################
     ## Python modules 
     ###################
@@ -58,8 +57,8 @@ From: ubuntu:16.04
     git clone https://github.com/${GITUSER}/dolphin-bin /usr/local/bin/dolphin-bin
 
     pip install -U boto
-    pip install numpy
-#    pip install RSeQC
+    pip install --upgrade pip    
+    pip install RSeQC
 
     cd /usr/local/bin/dolphin-bin/MACS2 && python setup.py install
     make -C /usr/local/bin/dolphin-bin/RSEM-1.2.29
