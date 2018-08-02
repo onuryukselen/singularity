@@ -16,7 +16,7 @@ From: ubuntu:16.04
     apt-get dist-upgrade
     apt-get -y install unzip libsqlite3-dev libbz2-dev libssl-dev python python-dev \
     python-pip git libxml2-dev software-properties-common wget tree vim \
-    subversion g++ gcc gfortran libcurl4-openssl-dev curl
+    subversion g++ gcc gfortran libcurl4-openssl-dev curl zlib1g-dev
 
     ###################
     ## Python modules 
