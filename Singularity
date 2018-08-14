@@ -100,13 +100,37 @@ From: ubuntu:16.04
     make
     make install
 	
-	#################
+    #################
     ## UMI-TOOLS
     #################
 	pip install umi_tools
     
     
-    
+    #################
+    ## R ##
+    #################
+    NPROCS=`awk '/^processor/ {s+=1}; END{print s}' /proc/cpuinfo`
+    cd /tmp 
+    wget http://security.ubuntu.com/ubuntu/pool/main/i/icu/libicu52_52.1-3ubuntu0.8_amd64.deb
+    dpkg -i libicu52_52.1-3ubuntu0.8_amd64.deb
+    wget https://cran.rstudio.com/src/base/R-3/R-3.5.1.tar.gz
+    tar xvf R-3.5.1.tar.gz
+    cd /tmp/R-3.5.1
+    apt-get update
+    apt-get install -y libblas3 libblas-dev liblapack-dev liblapack3 ghostscript  libicu52
+    apt-get install -y libgmp10 libgmp-dev
+    apt-get install -y fort77 aptitude
+    aptitude install -y xorg-dev
+    aptitude install -y libreadline-dev
+    apt install -y   libpcre3-dev liblzma-dev  
+    apt-get update
+    apt-get install -y bioperl
+    apt-get update 
+  
+    ./configure --enable-R-static-lib --with-blas --with-lapack --enable-R-shlib=yes 
+    echo "Will use make with $NPROCS cores."
+    make -j${NPROCS}
+    make install   
     
     
     
