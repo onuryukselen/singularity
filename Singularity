@@ -7,23 +7,21 @@ From: ubuntu:16.04
     Version v1.0
 
 %environment
-    PATH=$PATH:/bin:/sbin:/usr/local/bin/dolphin-bin:/usr/bin/bcl2fastq2-v2.17.1.14/bin:/usr/local/bin/dolphin-bin/tophat2_2.0.12
+    PATH=$PATH:/bin:/sbin:/usr/local/bin/dolphin-bin:/usr/bin/bcl2fastq2-v2.17.1.14/bin:/usr/local/bin/dolphin-bin/tophat-2.0.14.Linux_x86_64
     export PATH
 
 %post
-    apt-get update
+    apt-get update 
     apt-get -y upgrade
     apt-get dist-upgrade
-    apt-get -y install libsqlite3-dev libbz2-dev libssl-dev python python-dev \
+    apt-get -y install unzip libsqlite3-dev libbz2-dev libssl-dev python python-dev \
     python-pip git libxml2-dev software-properties-common wget tree vim \
-    subversion g++ gcc gfortran libcurl4-openssl-dev curl
-
+    subversion g++ gcc gfortran libcurl4-openssl-dev curl zlib1g-dev build-essential libffi-dev  python-lzo
     ###################
     ## Python modules 
     ###################
 	
 	export LC_ALL=C
-#	pip install --upgrade pip
 	pip install --upgrade pip==9.0.3
 	pip install pysam
 	pip install numpy scipy biopython
@@ -59,12 +57,25 @@ From: ubuntu:16.04
     git clone https://github.com/${GITUSER}/dolphin-bin /usr/local/bin/dolphin-bin
 
     pip install -U boto
-    pip install numpy
-#    pip install RSeQC
+    pip install --upgrade pip    
+    pip install RSeQC
 
     cd /usr/local/bin/dolphin-bin/MACS2 && python setup.py install
     make -C /usr/local/bin/dolphin-bin/RSEM-1.2.29
-    
+
+    ###tophat-2.0.14
+    cd /tmp
+    wget https://ccb.jhu.edu/software/tophat/downloads/tophat-2.0.14.Linux_x86_64.tar.gz
+    tar -xvzf tophat-2.0.14.Linux_x86_64.tar.gz
+    rm -rf /usr/local/bin/dolphin-bin/tophat2_2.0.12
+    mv tophat-2.0.14.Linux_x86_64/ /usr/local/bin/dolphin-bin/.
+   
+    ###bowtie
+   # wget -N --no-check-certificate https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.1.0/bowtie2-2.1.0-linux-x86_64.zip
+   # unzip bowtie2-2.1.0-linux-x86_64.zip
+   # rm -rf /usr/local/bin/dolphin-bin/bowtie2*
+   # mv bowtie2-2.1.0/bowtie2* /usr/local/bin/dolphin-bin/.
+	    
     #################
     ## BCL2FASTQ v2.17.1.14
     #################
@@ -89,13 +100,37 @@ From: ubuntu:16.04
     make
     make install
 	
-	#################
+    #################
     ## UMI-TOOLS
     #################
 	pip install umi_tools
     
     
-    
+    #################
+    ## R ##
+    #################
+    NPROCS=`awk '/^processor/ {s+=1}; END{print s}' /proc/cpuinfo`
+    cd /tmp 
+    wget http://security.ubuntu.com/ubuntu/pool/main/i/icu/libicu52_52.1-3ubuntu0.8_amd64.deb
+    dpkg -i libicu52_52.1-3ubuntu0.8_amd64.deb
+    wget https://cran.rstudio.com/src/base/R-3/R-3.5.1.tar.gz
+    tar xvf R-3.5.1.tar.gz
+    cd /tmp/R-3.5.1
+    apt-get update
+    apt-get install -y libblas3 libblas-dev liblapack-dev liblapack3 ghostscript  libicu52
+    apt-get install -y libgmp10 libgmp-dev
+    apt-get install -y fort77 aptitude
+    aptitude install -y xorg-dev
+    aptitude install -y libreadline-dev
+    apt install -y   libpcre3-dev liblzma-dev  
+    apt-get update
+    apt-get install -y bioperl
+    apt-get update 
+  
+    ./configure --enable-R-static-lib --with-blas --with-lapack --enable-R-shlib=yes 
+    echo "Will use make with $NPROCS cores."
+    make -j${NPROCS}
+    make install   
     
     
     
