@@ -133,8 +133,23 @@ From: ubuntu:16.04
     ./configure --enable-R-static-lib --with-blas --with-lapack --enable-R-shlib=yes 
     echo "Will use make with $NPROCS cores."
     make -j${NPROCS}
-    make install   
+    make install
     
+
+    R --slave -e "source('https://bioconductor.org/biocLite.R'); biocLite()"
+    R --slave -e "source('https://bioconductor.org/biocLite.R'); biocLite('scran')"
+    echo install.packages\(\"devtools\"\, dependencies = TRUE, repos\=\'https://cloud.r-project.org\'\, Ncpus\=${NPROCS}\) | R --slave
+    yes | apt-get install libmariadb-client-lgpl-dev
+    R --slave -e "source('https://bioconductor.org/biocLite.R'); biocLite('scater')"
+    R --slave -e "source('https://bioconductor.org/biocLite.R'); biocLite('BiocStyle')"
+    R --slave -e "source('https://bioconductor.org/biocLite.R'); biocLite('destiny')"
+    R --slave -e "source('https://bioconductor.org/biocLite.R'); biocLite('mvoutlier')"
+    R --slave -e "install.packages('BiocManager'); BiocManager::install('GenomicRanges', version = '3.8')"
+    R --slave -e "BiocManager::install('IRanges', version = '3.8')"
+    R --slave -e "BiocManager::install('ShortRead', version = '3.8')"
+    R --slave -e "install.packages('gplots')"
+    R --slave -e "install.packages('R.utils')"
+    R --slave -e "install.packages('RColorBrewer')"
     
     
     
