@@ -144,12 +144,13 @@ From: ubuntu:16.04
     R --slave -e "source('https://bioconductor.org/biocLite.R'); biocLite('BiocStyle')"
     R --slave -e "source('https://bioconductor.org/biocLite.R'); biocLite('destiny')"
     R --slave -e "source('https://bioconductor.org/biocLite.R'); biocLite('mvoutlier')"
-    R --slave -e "install.packages('BiocManager'); BiocManager::install('GenomicRanges', version = '3.8')"
+    echo install.packages\(\"BiocManager\"\, dependencies = TRUE, repos\=\'https://cloud.r-project.org\'\, Ncpus\=${NPROCS}\) | R --slave
+    echo install.packages\(\"gplots\"\, dependencies = TRUE, repos\=\'https://cloud.r-project.org\'\, Ncpus\=${NPROCS}\) | R --slave
+    echo install.packages\(\"R.utils\"\, dependencies = TRUE, repos\=\'https://cloud.r-project.org\'\, Ncpus\=${NPROCS}\) | R --slave
+    echo install.packages\(\"RColorBrewer\"\, dependencies = TRUE, repos\=\'https://cloud.r-project.org\'\, Ncpus\=${NPROCS}\) | R --slave
+    R --slave -e "BiocManager::install('GenomicRanges', version = '3.8')"
     R --slave -e "BiocManager::install('IRanges', version = '3.8')"
     R --slave -e "BiocManager::install('ShortRead', version = '3.8')"
-    R --slave -e "install.packages('gplots')"
-    R --slave -e "install.packages('R.utils')"
-    R --slave -e "install.packages('RColorBrewer')"
     
     
     
