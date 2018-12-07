@@ -135,14 +135,10 @@ From: ubuntu:16.04
     make -j${NPROCS}
     make install
     
-
     R --slave -e "source('https://bioconductor.org/biocLite.R'); biocLite()"
-    R --slave -e "source('https://bioconductor.org/biocLite.R'); biocLite('scran')"
-    echo install.packages\(\"devtools\"\, dependencies = TRUE, repos\=\'https://cloud.r-project.org\'\, Ncpus\=${NPROCS}\) | R --slave
-    yes | apt-get install libmariadb-client-lgpl-dev
-    echo install.packages\(\"gplots\"\, dependencies = TRUE, repos\=\'https://cloud.r-project.org\'\, Ncpus\=${NPROCS}\) | R --slave
-    echo install.packages\(\"R.utils\"\, dependencies = TRUE, repos\=\'https://cloud.r-project.org\'\, Ncpus\=${NPROCS}\) | R --slave
-    R --slave -e "BiocManager::install('ShortRead', version = '3.8')"
+    R --slave -e "install.packages(c('devtools', 'gplots', 'R.utils', 'RColorBrewer'), dependencies = TRUE, repos='https://cloud.r-project.org', Ncpus=${NPROCS})"
+    R --slave -e "BiocManager::install(c('XVector', 'GenomicRanges','ShortRead', 'scran'), version = '3.8')"
+    sed -i 's/, ignoreSelf=TRUE//g' /usr/local/bin/dolphin-bin/kraken/seqimp-13-274/bin/miR_table.R
     
     
     
