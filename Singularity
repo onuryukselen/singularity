@@ -7,7 +7,7 @@ From: ubuntu:16.04
     Version v1.0
 
 %environment
-    PATH=$PATH:/bin:/sbin:/usr/local/bin/dolphin-bin:/usr/bin/bcl2fastq2-v2.17.1.14/bin:/usr/local/bin/dolphin-bin/tophat-2.0.14.Linux_x86_64:/usr/local/bin/dolphin-bin/kraken
+    PATH=$PATH:/bin:/sbin:/usr/local/bin/dolphin-bin:/usr/bin/bcl2fastq2-v2.17.1.14/bin:/usr/local/bin/dolphin-bin/tophat-2.0.14.Linux_x86_64:/usr/local/bin/dolphin-bin/kraken:/usr/local/bin/dolphin-bin/samtools-1.2
     export PATH
 
 %post
@@ -65,7 +65,9 @@ From: ubuntu:16.04
     
     ##kraken
     chmod 777 /usr/local/bin/dolphin-bin/kraken/*
-    
+    ##samtools use /usr/local/bin/dolphin-bin/samtools-1.2/samtools
+    rm /usr/local/bin/dolphin-bin/samtools
+   
     ###tophat-2.0.14
     cd /tmp
     wget https://ccb.jhu.edu/software/tophat/downloads/tophat-2.0.14.Linux_x86_64.tar.gz
