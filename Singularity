@@ -55,7 +55,10 @@ From: ubuntu:16.04
     export GITUSER=UMMS-Biocore
 
     git clone https://github.com/${GITUSER}/dolphin-bin /usr/local/bin/dolphin-bin
-
+    
+    ## use /usr/local/bin/dolphin-bin/samtools-1.2/samtools 
+    rm  /usr/local/bin/dolphin-bin/samtools
+    
     pip install -U boto
     pip install --upgrade pip    
     pip install RSeQC
@@ -70,9 +73,7 @@ From: ubuntu:16.04
     rm -rf /usr/local/bin/dolphin-bin/tophat2_2.0.12
     mv tophat-2.0.14.Linux_x86_64/ /usr/local/bin/dolphin-bin/.
    
-    ## use /usr/local/bin/dolphin-bin/samtools-1.2/samtools 
-    rm  /usr/local/bin/dolphin-bin/samtools
-    cp  /usr/local/bin/dolphin-bin/samtools-1.2/samtools /usr/bin/.
+    
   
 	    
     #################
@@ -98,7 +99,6 @@ From: ubuntu:16.04
     ${SOURCE}/src/configure --prefix=${INSTALL_DIR}
     make
     make install
-	cp  /usr/local/bin/dolphin-bin/samtools-1.2/samtools /usr/bin/.
     #################
     ## UMI-TOOLS
     #################
@@ -132,7 +132,7 @@ From: ubuntu:16.04
     make install   
     
     
-    
+    cp  /usr/local/bin/dolphin-bin/samtools-1.2/samtools /usr/bin/.
     
     
     
