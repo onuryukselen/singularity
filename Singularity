@@ -74,11 +74,6 @@ From: ubuntu:16.04
     rm  /usr/local/bin/dolphin-bin/samtools
     cp  /usr/local/bin/dolphin-bin/samtools-1.2/samtools /usr/bin/.
   
-    ###bowtie
-   # wget -N --no-check-certificate https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.1.0/bowtie2-2.1.0-linux-x86_64.zip
-   # unzip bowtie2-2.1.0-linux-x86_64.zip
-   # rm -rf /usr/local/bin/dolphin-bin/bowtie2*
-   # mv bowtie2-2.1.0/bowtie2* /usr/local/bin/dolphin-bin/.
 	    
     #################
     ## BCL2FASTQ v2.17.1.14
@@ -103,7 +98,7 @@ From: ubuntu:16.04
     ${SOURCE}/src/configure --prefix=${INSTALL_DIR}
     make
     make install
-	
+	cp  /usr/local/bin/dolphin-bin/samtools-1.2/samtools /usr/bin/.
     #################
     ## UMI-TOOLS
     #################
