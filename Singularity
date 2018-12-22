@@ -72,7 +72,7 @@ From: ubuntu:16.04
    
     ## use /usr/local/bin/dolphin-bin/samtools-1.2/samtools 
     rm  /usr/local/bin/dolphin-bin/samtools
-    rm  /usr/bin/samtools
+    cp  /usr/local/bin/dolphin-bin/samtools-1.2/samtools /usr/bin/.
   
     ###bowtie
    # wget -N --no-check-certificate https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.1.0/bowtie2-2.1.0-linux-x86_64.zip
