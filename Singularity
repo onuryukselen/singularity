@@ -7,7 +7,7 @@ From: ubuntu:16.04
     Version v1.0
 
 %environment
-    PATH=$PATH:/bin:/sbin:/usr/local/bin/dolphin-bin:/usr/bin/bcl2fastq2-v2.17.1.14/bin:/usr/local/bin/dolphin-bin/tophat-2.0.14.Linux_x86_64:/usr/local/bin/dolphin-bin/kraken:/usr/local/bin/dolphin-bin/samtools-1.2
+    PATH=$PATH:/bin:/sbin:/usr/local/bin/dolphin-bin:/usr/bin/bcl2fastq2-v2.17.1.14/bin:/usr/local/bin/dolphin-bin/tophat-2.0.14.Linux_x86_64:/usr/local/bin/dolphin-bin/samtools-1.2
     export PATH
 
 %post
@@ -62,12 +62,7 @@ From: ubuntu:16.04
 
     cd /usr/local/bin/dolphin-bin/MACS2 && python setup.py install
     make -C /usr/local/bin/dolphin-bin/RSEM-1.2.29
-    
-    ##kraken
-    chmod 777 /usr/local/bin/dolphin-bin/kraken/*
-    ##samtools use /usr/local/bin/dolphin-bin/samtools-1.2/samtools
-    rm /usr/local/bin/dolphin-bin/samtools
-   
+
     ###tophat-2.0.14
     cd /tmp
     wget https://ccb.jhu.edu/software/tophat/downloads/tophat-2.0.14.Linux_x86_64.tar.gz
@@ -75,6 +70,9 @@ From: ubuntu:16.04
     rm -rf /usr/local/bin/dolphin-bin/tophat2_2.0.12
     mv tophat-2.0.14.Linux_x86_64/ /usr/local/bin/dolphin-bin/.
    
+    ## use /usr/local/bin/dolphin-bin/samtools-1.2/samtools 
+    rm  /usr/local/bin/dolphin-bin/samtools
+  
     ###bowtie
    # wget -N --no-check-certificate https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.1.0/bowtie2-2.1.0-linux-x86_64.zip
    # unzip bowtie2-2.1.0-linux-x86_64.zip
@@ -135,12 +133,8 @@ From: ubuntu:16.04
     ./configure --enable-R-static-lib --with-blas --with-lapack --enable-R-shlib=yes 
     echo "Will use make with $NPROCS cores."
     make -j${NPROCS}
-    make install
+    make install   
     
-    R --slave -e "source('https://bioconductor.org/biocLite.R'); biocLite()"
-    R --slave -e "install.packages(c('devtools', 'gplots', 'R.utils', 'RColorBrewer'), dependencies = TRUE, repos='https://cloud.r-project.org', Ncpus=${NPROCS})"
-    R --slave -e "BiocManager::install(c('XVector', 'GenomicRanges','ShortRead', 'scran'), version = '3.8')"
-    sed -i 's/, ignoreSelf=TRUE//g' /usr/local/bin/dolphin-bin/kraken/seqimp-13-274/bin/miR_table.R
     
     
     
