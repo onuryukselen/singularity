@@ -59,6 +59,7 @@ From: ubuntu:16.04
     pip install -U boto
     pip install --upgrade pip    
     pip install RSeQC
+    pip install multiqc
 
     cd /usr/local/bin/dolphin-bin/MACS2 && python setup.py install
     make -C /usr/local/bin/dolphin-bin/RSEM-1.2.29
@@ -129,6 +130,4 @@ From: ubuntu:16.04
     R --slave -e "BiocManager::install(c('XVector', 'GenomicRanges','ShortRead', 'scran'), version = '3.8')"
     sed -i 's/, ignoreSelf=TRUE//g' /usr/local/bin/dolphin-bin/kraken/seqimp-13-274/bin/miR_table.R
     
-    ##samtools
-    rm  /usr/local/bin/dolphin-bin/samtools
-    cp  /usr/local/bin/dolphin-bin/samtools-1.2/samtools /usr/bin/.
+
