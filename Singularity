@@ -102,7 +102,7 @@ From: ubuntu:16.04
     #################
     ## UMI-TOOLS
     #################
-	pip install umi_tools
+	pip install umi_tools==0.5.5
 
     #################
     ## R ##
