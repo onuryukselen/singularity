@@ -116,7 +116,8 @@ From: ubuntu:16.04
     cd /tmp/R-3.5.1
     apt-get update
     apt-get install -y libblas3 libblas-dev liblapack-dev liblapack3 ghostscript  libicu52 \
-    libgmp10 libgmp-dev fort77 aptitude libpcre3-dev liblzma-dev libmariadb-client-lgpl-dev
+    libgmp10 libgmp-dev fort77 aptitude libpcre3-dev liblzma-dev libmariadb-client-lgpl-dev \
+    libx11-dev libxt-dev qpdf libpng12-dev libjpeg62
     aptitude install -y xorg-dev libreadline-dev
     apt-get install -y bioperl
     apt-get update 
