@@ -131,7 +131,7 @@ From: ubuntu:16.04
     R --slave -e "BiocManager::install(c('XVector', 'GenomicRanges','ShortRead', 'scran'), version = '3.8')"
     sed -i 's/, ignoreSelf=TRUE//g' /usr/local/bin/dolphin-bin/kraken/seqimp-13-274/bin/miR_table.R
     
-    ################# 
+    ##################
     ##subread-featureCounts
     ##################
     cd /usr/bin/
