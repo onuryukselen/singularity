@@ -117,7 +117,7 @@ From: ubuntu:16.04
     apt-get update
     apt-get install -y libblas3 libblas-dev liblapack-dev liblapack3 ghostscript  libicu52 \
     libgmp10 libgmp-dev fort77 aptitude libpcre3-dev liblzma-dev libmariadb-client-lgpl-dev \
-    libx11-dev libxt-dev qpdf libpng12-dev libjpeg62
+    libx11-dev libxt-dev qpdf libpng12-dev libjpeg62, xvfb, xauth xfonts-base
     aptitude install -y xorg-dev libreadline-dev
     apt-get install -y bioperl
     apt-get update 
@@ -131,6 +131,8 @@ From: ubuntu:16.04
     R --slave -e "install.packages(c('devtools', 'gplots', 'R.utils', 'RColorBrewer', 'Cairo'), dependencies = TRUE, repos='https://cloud.r-project.org', Ncpus=${NPROCS})"
     R --slave -e "BiocManager::install(c('XVector', 'GenomicRanges','ShortRead', 'scran'), version = '3.8')"
     sed -i 's/, ignoreSelf=TRUE//g' /usr/local/bin/dolphin-bin/kraken/seqimp-13-274/bin/miR_table.R
+    #X11 display fix
+    Xvfb :0 -ac -screen 0 1960x2000x24 &
     
     ##################
     ##subread-featureCounts
