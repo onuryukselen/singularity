@@ -131,8 +131,7 @@ From: ubuntu:16.04
     R --slave -e "install.packages(c('devtools', 'gplots', 'R.utils', 'RColorBrewer', 'Cairo'), dependencies = TRUE, repos='https://cloud.r-project.org', Ncpus=${NPROCS})"
     R --slave -e "BiocManager::install(c('XVector', 'GenomicRanges','ShortRead', 'scran'), version = '3.8')"
     sed -i 's/, ignoreSelf=TRUE//g' /usr/local/bin/dolphin-bin/kraken/seqimp-13-274/bin/miR_table.R
-    #X11 display fix
-    Xvfb :0 -ac -screen 0 1960x2000x24 &
+    
     
     ##################
     ##subread-featureCounts
