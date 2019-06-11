@@ -138,6 +138,6 @@ From: ubuntu:16.04
     ##subread-featureCounts
     ##################
     cd /usr/bin/
-    wget https://galaxyweb.umassmed.edu/pub/software/subread-1.6.4-Linux-x86_64.tar.gz
+    mv /usr/local/bin/dolphin-bin/subread-1.6.4-Linux-x86_64.tar.gz /usr/bin/.
     tar zxvf subread-1.6.4-Linux-x86_64.tar.gz
 
