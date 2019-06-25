@@ -7,7 +7,7 @@ From: ubuntu:16.04
     Version v1.0
 
 %environment
-    PATH=$PATH:/bin:/sbin:/usr/local/bin/dolphin-bin:/usr/bin/bcl2fastq2-v2.17.1.14/bin:/usr/local/bin/dolphin-bin/tophat-2.0.14.Linux_x86_64:/usr/local/bin/dolphin-bin/kraken:/usr/local/bin/dolphin-bin/samtools-1.2:/usr/bin/subread-1.6.4-Linux-x86_64/bin:/usr/bin/homer/bin
+    PATH=$PATH:/bin:/sbin:/usr/local/bin/dolphin-bin:/usr/bin/bcl2fastq2-v2.17.1.14/bin:/usr/local/bin/dolphin-bin/tophat-2.0.14.Linux_x86_64:/usr/local/bin/dolphin-bin/kraken:/usr/local/bin/dolphin-bin/samtools-1.2:/usr/bin/subread-1.6.4-Linux-x86_64/bin
     export PATH
 
 %post
@@ -140,10 +140,5 @@ From: ubuntu:16.04
     cd /usr/bin/
     mv /usr/local/bin/dolphin-bin/subread-1.6.4-Linux-x86_64.tar.gz /usr/bin/.
     tar zxvf subread-1.6.4-Linux-x86_64.tar.gz
-    ##################
-    ##homer
-    ##################
-    cd /usr/bin/ && mkdir -p homer && cd homer
-    wget http://homer.ucsd.edu/homer/configureHomer.pl
-    perl configureHomer.pl -install
+    
 
