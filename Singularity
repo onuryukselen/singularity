@@ -26,7 +26,7 @@ From: ubuntu:16.04
 	pip install --upgrade pip==9.0.3
 	pip install pysam
 	pip install numpy scipy 
-	pip install biopython==1.16.4
+	pip install biopython==1.20
 
     ###################
     ## JAVA 
