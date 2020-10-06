@@ -130,10 +130,6 @@ From: ubuntu:16.04
     make install
     
     R --slave -e "source('https://bioconductor.org/biocLite.R'); biocLite()"
-    R --slave -e "install.packages(c('devtools', 'gplots', 'R.utils', 'RColorBrewer', 'Cairo'), dependencies = TRUE, repos='https://cloud.r-project.org', Ncpus=${NPROCS})"
-    R --slave -e "BiocManager::install(c('XVector', 'GenomicRanges','ShortRead', 'scran'), version = '3.8')"
-    sed -i 's/, ignoreSelf=TRUE//g' /usr/local/bin/dolphin-bin/kraken/seqimp-13-274/bin/miR_table.R
-    R --slave -e "BiocManager::install(c('ChIPseeker','ChIPpeakAnno','clusterProfiler','TxDb.Hsapiens.UCSC.hg19.knownGene','TxDb.Mmusculus.UCSC.mm10.knownGene','TxDb.Hsapiens.UCSC.hg38.knownGene','org.Hs.eg.db','org.Mm.eg.db'))"
     
     #X11 display fix
     Xvfb :0 -ac -screen 0 1960x2000x24 &
