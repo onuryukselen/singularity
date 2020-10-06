@@ -7,10 +7,11 @@ From: ubuntu:16.04
     Version v1.0
 
 %environment
-    PATH=$PATH:/bin:/sbin:/usr/local/bin/dolphin-bin:/usr/bin/bcl2fastq2-v2.17.1.14/bin:/usr/local/bin/dolphin-bin/tophat-2.0.14.Linux_x86_64:/usr/local/bin/dolphin-bin/kraken:/usr/local/bin/dolphin-bin/samtools-1.2:/usr/bin/subread-1.6.4-Linux-x86_64/bin
+    PATH=$PATH:/bin:/sbin:/usr/local/bin/dolphin-bin:/usr/bin/bcl2fastq2-v2.17.1.14/bin:/usr/local/bin/dolphin-bin/tophat-2.1.1.Linux_x86_64:/usr/local/bin/dolphin-bin/kraken:/usr/local/bin/dolphin-bin/samtools-1.2:/usr/bin/subread-1.6.4-Linux-x86_64/bin
     export PATH
 
 %post
+    echo "start"	
     apt-get update 
     apt-get -y upgrade
     apt-get dist-upgrade
@@ -68,12 +69,12 @@ From: ubuntu:16.04
     ##kraken
     chmod 777 /usr/local/bin/dolphin-bin/kraken/*
     
-    ###tophat-2.0.14
+    ###tophat-2.1.1
     cd /tmp
-    wget https://ccb.jhu.edu/software/tophat/downloads/tophat-2.0.14.Linux_x86_64.tar.gz
-    tar -xvzf tophat-2.0.14.Linux_x86_64.tar.gz
+    wget https://ccb.jhu.edu/software/tophat/downloads/tophat-2.1.1.Linux_x86_64.tar.gz
+    tar -xvzf tophat-2.1.1.Linux_x86_64.tar.gz
     rm -rf /usr/local/bin/dolphin-bin/tophat2_2.0.12
-    mv tophat-2.0.14.Linux_x86_64/ /usr/local/bin/dolphin-bin/.
+    mv tophat-2.1.1.Linux_x86_64/ /usr/local/bin/dolphin-bin/.
 
     #################
     ## BCL2FASTQ v2.17.1.14
@@ -131,7 +132,7 @@ From: ubuntu:16.04
     R --slave -e "install.packages(c('devtools', 'gplots', 'R.utils', 'RColorBrewer', 'Cairo'), dependencies = TRUE, repos='https://cloud.r-project.org', Ncpus=${NPROCS})"
     R --slave -e "BiocManager::install(c('XVector', 'GenomicRanges','ShortRead', 'scran'), version = '3.8')"
     sed -i 's/, ignoreSelf=TRUE//g' /usr/local/bin/dolphin-bin/kraken/seqimp-13-274/bin/miR_table.R
-    R --slave -e "BiocManager::install(c('ChIPseeker','ChIPpeakAnno','TxDb.Hsapiens.UCSC.hg19.knownGene','TxDb.Mmusculus.UCSC.mm10.knownGene','TxDb.Hsapiens.UCSC.hg38.knownGene','org.Hs.eg.db','org.Mm.eg.db'))"
+    R --slave -e "BiocManager::install(c('ChIPseeker','ChIPpeakAnno','clusterProfiler','TxDb.Hsapiens.UCSC.hg19.knownGene','TxDb.Mmusculus.UCSC.mm10.knownGene','TxDb.Hsapiens.UCSC.hg38.knownGene','org.Hs.eg.db','org.Mm.eg.db'))"
     
     #X11 display fix
     Xvfb :0 -ac -screen 0 1960x2000x24 &
