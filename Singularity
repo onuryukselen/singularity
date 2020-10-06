@@ -25,7 +25,8 @@ From: ubuntu:16.04
 	export LC_ALL=C
 	pip install --upgrade pip==9.0.3
 	pip install pysam
-	pip install numpy scipy biopython
+	pip install numpy scipy 
+	pip install biopython==1.16.4
 
     ###################
     ## JAVA 
@@ -60,7 +61,7 @@ From: ubuntu:16.04
 
     pip install -U boto
     pip install --upgrade pip    
-    # pip install "RSeQC==2.6.6"
+    pip install "RSeQC==2.6.6"
     pip install "multiqc==1.7"
 
     cd /usr/local/bin/dolphin-bin/MACS2 && python setup.py install
