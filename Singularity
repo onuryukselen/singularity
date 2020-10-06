@@ -60,8 +60,8 @@ From: ubuntu:16.04
 
     pip install -U boto
     pip install --upgrade pip    
-    pip install RSeQC
-    pip install multiqc
+    # pip install "RSeQC==2.6.6"
+    pip install "multiqc==1.7"
 
     cd /usr/local/bin/dolphin-bin/MACS2 && python setup.py install
     make -C /usr/local/bin/dolphin-bin/RSEM-1.2.29
