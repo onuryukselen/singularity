@@ -140,5 +140,5 @@ From: ubuntu:16.04
     cd /usr/bin/
     mv /usr/local/bin/dolphin-bin/subread-1.6.4-Linux-x86_64.tar.gz /usr/bin/.
     tar zxvf subread-1.6.4-Linux-x86_64.tar.gz
-    
+    sed -i 's/if ticker == 144/if ticker == 144000000/' /usr/local/bin/dolphin-bin/rose/ROSE_main.py   
 
